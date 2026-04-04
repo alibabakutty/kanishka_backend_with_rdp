@@ -18,7 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Map;
 
 @Service
@@ -80,6 +79,24 @@ public class LoginServiceImpl implements LoginService {
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(Map.of("message", "User registered successfully"));
+    }
+
+    @Override
+    public String processOAuth2UserAndGetToken(String email, String name) {
+        // check if user exists by email
+        LoginModule user = loginRepository.findByEmail(email)
+                .orElseGet(() -> {
+                    // if not found create a new user
+                    LoginModule newUser = new LoginModule();
+                    newUser.setUsername(email);
+                    newUser.setEmail(email);
+                    newUser.setRole("USER");
+                    // set a random password they will never use
+                    newUser.setPassword(passwordEncoder.encode("OAUTH2_USER_" + java.util.UUID.randomUUID()));
+                    return loginRepository.save(newUser);
+                });
+        // generate and return the token value
+        return jwtUtils.generateJwtCookie(user.getUsername()).getValue();
     }
 
     @Override
