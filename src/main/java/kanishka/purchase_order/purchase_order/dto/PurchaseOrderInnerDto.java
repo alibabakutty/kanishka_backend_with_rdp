@@ -17,12 +17,12 @@ public record PurchaseOrderInnerDto(
         String orderNo,
         @JsonAlias("Total Amount")
         BigDecimal totalAmount,
+        @JsonAlias("Narration")
+        String narration,
         @JsonAlias("PO Created By")
         String createdBy,
         @JsonAlias("PO Approved By")
-        String approvedByTally,
-        @JsonAlias("Approved By Tab")
-        String approvedByTab,
+        String approvedBy,
         @JsonAlias("Inventory Entries")
         List<PurchaseOrderItemRawDto> inventoryEntries
         ) {

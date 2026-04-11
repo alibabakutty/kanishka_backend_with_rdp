@@ -30,14 +30,14 @@ public class PurchaseOrderXmlDto {
     @JacksonXmlProperty(localName = "TotalAmount")
     private BigDecimal totalAmount;
 
+    @JacksonXmlProperty(localName = "Narration")
+    private String narration;
+
     @JacksonXmlProperty(localName = "PO Created By")
     private String createdBy;
 
     @JacksonXmlProperty(localName = "PO Approved By")
-    private String approvedByTally;
-
-    @JacksonXmlProperty(localName = "Approved By Tab")
-    private String approvedByTab;
+    private String approvedBy;
 
     @JacksonXmlElementWrapper(localName = "InventoryEntries")
     @JacksonXmlProperty(localName = "Item")

@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -50,15 +48,14 @@ public class PurchaseOrderEntity {
     @Column(name = "total_amount", precision = 19, scale = 2)
     private BigDecimal totalAmount;
 
+    @Column(length = 1000)
+    private String narration;
+
     @Column(name = "created_by")
     private String createdBy;
 
-    @Column(name = "approved_by_tally")
-    private String approvedByTally;
-
-    @Column(name = "approved_by_tab")
-    private String approvedByTab;
-
+    @Column(name = "approved_by")
+    private String approvedBy;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)

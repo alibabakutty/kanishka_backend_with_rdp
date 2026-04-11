@@ -15,9 +15,9 @@ public record PurchaseOrderRequest(
         @NotBlank String partyLedgerName,
         @NotBlank String orderNo,
         BigDecimal totalAmount,
+        String narration,
         String createdBy,
-        String approvedByTally,
-        String approvedByTab,
+        String approvedBy,
         List<PurchaseOrderSubFormRequest> inventoryEntries
 ) {
 }

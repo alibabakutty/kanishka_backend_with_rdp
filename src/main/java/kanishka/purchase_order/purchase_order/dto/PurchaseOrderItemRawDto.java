@@ -2,9 +2,17 @@ package kanishka.purchase_order.purchase_order.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 
+import java.math.BigDecimal;
+
 public record PurchaseOrderItemRawDto(
         @JsonAlias("Item Name")
         String itemName,
+
+        @JsonAlias("HSN Code")
+        String hsnCode,
+
+        @JsonAlias("GST")
+        BigDecimal gstPercentage,
 
         @JsonAlias("Item UOM")
         String itemUom,

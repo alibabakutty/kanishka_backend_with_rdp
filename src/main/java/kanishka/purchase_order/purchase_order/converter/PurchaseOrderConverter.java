@@ -20,6 +20,8 @@ public class PurchaseOrderConverter {
                 .stream()
                 .map(item -> new PurchaseOrderSubFormRequest(
                         item.itemName(),
+                        item.hsnCode(),
+                        item.gstPercentage(),
                         item.itemUom(),
                         extractQty(item.billedQty()),
                         new BigDecimal(item.itemRate()),
@@ -33,9 +35,9 @@ public class PurchaseOrderConverter {
                 dto.partyLedgerName(),
                 dto.orderNo(),
                 dto.totalAmount(),
+                dto.narration(),
                 dto.createdBy(),
-                dto.approvedByTally(),
-                dto.approvedByTab(),
+                dto.approvedBy(),
                 items
         );
     }
@@ -46,6 +48,8 @@ public class PurchaseOrderConverter {
                 .stream()
                 .map(item -> new PurchaseOrderSubFormRequest(
                         item.getItemName(),
+                        item.getHsnCode(),
+                        item.getGstPercentage(),
                         item.getItemUom(),
                         new BigDecimal(item.getBilledQty()),
                         new BigDecimal(item.getRate()),
@@ -60,8 +64,8 @@ public class PurchaseOrderConverter {
                 xml.getOrderNo(),
                 xml.getTotalAmount(),
                 xml.getCreatedBy(),
-                xml.getApprovedByTally(),
-                xml.getApprovedByTab(),
+                xml.getApprovedBy(),
+                xml.getNarration(),
                 items
         );
     }

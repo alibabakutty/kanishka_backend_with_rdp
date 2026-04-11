@@ -1,9 +1,7 @@
 package kanishka.purchase_order.purchase_order.module;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.math.BigDecimal;
@@ -26,6 +24,14 @@ public class PurchaseOrderSubFormEntity {
     @NotBlank(message = "Item name is required")
     @Column(nullable = false)
     private String itemName;
+
+    @Size(min = 4, max = 10, message = "HSN Code should be between 4 to 10 characters")
+    private String hsnCode;
+
+    @Column(precision = 5, scale = 2)
+    @DecimalMin(value = "0.0", inclusive = true)
+    @DecimalMax(value = "100.0", inclusive = true)
+    private BigDecimal gstPercentage;
 
     @Column(nullable = false)
     private String itemUom;

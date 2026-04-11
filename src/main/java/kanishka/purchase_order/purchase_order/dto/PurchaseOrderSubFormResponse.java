@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 public record PurchaseOrderSubFormResponse(
         Long id,
         String itemName,
+        String hsnCode,
+        BigDecimal gstPercentage,
         String itemUom,
         BigDecimal billedQty,
         BigDecimal itemRate,
