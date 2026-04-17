@@ -2,8 +2,22 @@ package kanishka.purchase_order.invoice.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class InvoiceUtil {
+
+    public String formatDate(String dateStr) {
+        if (dateStr == null || dateStr.isEmpty()) return  "";
+
+        try {
+            LocalDate date = LocalDate.parse(dateStr);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            return date.format(formatter);
+        } catch (Exception e) {
+            return dateStr;
+        }
+    }
 
     public String formatINR(BigDecimal val) {
         if (val == null) return "₹ 0.00";

@@ -58,12 +58,12 @@ public class InvoiceController {
         // ✅ FORMAT TOTAL
         String formattedTotal = invoiceUtil.formatINR(total);
         String totalInWords = invoiceUtil.convertToWords(total);
-
+        String formattedDate = invoiceUtil.formatDate(request.getDate());
 
         // send data to thymeleaf
         Context context = new Context();
         context.setVariable("invoiceNo", request.getInvoiceNo());
-        context.setVariable("date", request.getDate());
+        context.setVariable("date", formattedDate);
         context.setVariable("customerName", request.getCustomerName());
         context.setVariable("address", request.getAddress());
         context.setVariable("items", request.getItems());
