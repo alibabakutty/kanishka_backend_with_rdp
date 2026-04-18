@@ -60,48 +60,57 @@
 
 <div class="container">
 
-    <table>
-        <tr>
-            <td style="width: 25%;">
-                <img th:src="@{classpath:static/logo.png}" alt="kanishka logo" width="100" height="100" />
-            </td>
-            <td class="center" style="width: 50%;">
-                <div class="bold">TAX INVOICE</div>
+    <div style="display: table; width: 100%; border: 1px solid black;">
+
+        <div style="display: table-row;">
+
+            <!-- LEFT -->
+            <div style="display: table-cell; width: 25%; padding: 4px;">
+                <img th:src="@{classpath:static/logo.png}" width="100" height="100" />
+            </div>
+
+            <!-- CENTER -->
+            <div style="display: table-cell; width: 50%; padding: 4px; text-align: center; vertical-align: top;">
                 <div class="bold">Kanishka Construction Company</div>
                 <div class="small">
-                    OFFICE: Flat No.58, No.25/6 House of JAYAM VYBHAKAR, Nehru Street,<br/>
+                    OFFICE: Flat No.58, No. 25/6 House of JAYAM VYBHAKAR, Nehru Street,<br/>
                     Chennai - 600028<br/>
                     GSTIN/UIN: 33AABCLT470K1Z4
                 </div>
-            </td>
-            <td class="right small" style="width: 25%;">
+            </div>
+
+            <!-- RIGHT -->
+            <div style="display: table-cell; width: 25%; padding: 4px; text-align: right; vertical-align: top;">
                 (ORIGINAL FOR RECIPIENT)
-            </td>
-        </tr>
-    </table>
+            </div>
+
+        </div>
+
+    </div>
 
     <table>
         <tr>
             <td style="width: 50%;">
-                <b th:text="'Name & Address:'">Name & Address:</b><br/>
-                <span th:text="${customerName}">Acc Limited</span><br/>
-                <span th:text="${address}">Survey No.505/1...</span>
+                <div style="text-align: center;">
+                    <b th:text="'PURCHASE ORDER'">PURCHASE ORDER</b>
+                </div>
+                <b th:text="${customerName}">Acc Limited</b><br/>
+                <span th:text="${address}">Survey No.505/1...</span><br/>
+                <b>GSTIN:</b> 33AAACT1507C1Z4
             </td>
             <td style="width: 50%;">
-                <b>Invoice No:</b> <span th:text="${invoiceNo}">POM-001</span><br/>
-                <b>Date:</b> <span th:text="${date}">21-4-2026</span><br/><br/>
+                <b style="margin-right: 5px">Voucher No:</b> <span th:text="${invoiceNo}">POM-001</span>
+                <b style="margin-left: 10px; margin-right: 5px">Date:</b> <span th:text="${date}">21-4-2026</span><br/>
+
+                <b style="margin-right: 33.8px">PO No:</b> <span th:text="${invoiceNo}">POM-001</span>
+                <b style="margin-left: 11.5px; margin-right: 5px">Date:</b> <span th:text="${date}">21-4-2026</span><br/><br/>
+
 
                 <b>Site Address:</b><br/>
                 KANISHKA CIVIL ENGINEERING PRIVATE LIMITED<br/>
                 Flat No.2B, No.56 House of JAYAM VYBHAKAR,<br/>
                 Vinyam Road, Mandaveli, Chennai-600028
             </td>
-        </tr>
-    </table>
-
-    <table>
-        <tr>
-            <td><b>GSTIN:</b> 33AAACT1507C1Z4</td>
         </tr>
     </table>
 
@@ -172,7 +181,7 @@
                 Time:
             </td>
             <td class="right" style="width: 50%;">
-                For Demo Construction Company<br/><br/><br/>
+                For Kanishka Construction Company<br/><br/><br/>
                 Authorized Signatory
             </td>
         </tr>
