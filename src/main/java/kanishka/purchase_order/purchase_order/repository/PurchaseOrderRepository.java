@@ -1,7 +1,7 @@
 package kanishka.purchase_order.purchase_order.repository;
 
 import jakarta.persistence.LockModeType;
-import kanishka.purchase_order.purchase_order.module.PurchaseOrderEntity;
+import kanishka.purchase_order.purchase_order.model.PurchaseOrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;

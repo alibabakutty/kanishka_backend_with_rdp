@@ -2,7 +2,7 @@ package kanishka.purchase_order.purchase_order.mapper;
 
 import kanishka.purchase_order.purchase_order.dto.api_side.PurchaseOrderRequest;
 import kanishka.purchase_order.purchase_order.dto.response_side.PurchaseOrderResponse;
-import kanishka.purchase_order.purchase_order.module.PurchaseOrderEntity;
+import kanishka.purchase_order.purchase_order.model.PurchaseOrderEntity;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

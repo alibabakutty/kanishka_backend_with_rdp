@@ -1,5 +1,5 @@
 package kanishka.purchase_order.tally_update.service;
-import kanishka.purchase_order.purchase_order.module.PurchaseOrderEntity;
+import kanishka.purchase_order.purchase_order.model.PurchaseOrderEntity;
 import kanishka.purchase_order.purchase_order.repository.PurchaseOrderRepository;
 import kanishka.purchase_order.tally_update.dto.Tally_Dto;
 import org.springframework.beans.factory.annotation.Autowired;

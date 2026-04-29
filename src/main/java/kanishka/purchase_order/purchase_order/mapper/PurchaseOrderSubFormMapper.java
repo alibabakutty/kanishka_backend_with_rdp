@@ -2,7 +2,7 @@ package kanishka.purchase_order.purchase_order.mapper;
 
 import kanishka.purchase_order.purchase_order.dto.api_side.PurchaseOrderSubFormRequest;
 import kanishka.purchase_order.purchase_order.dto.response_side.PurchaseOrderSubFormResponse;
-import kanishka.purchase_order.purchase_order.module.PurchaseOrderSubFormEntity;
+import kanishka.purchase_order.purchase_order.model.PurchaseOrderSubFormEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import java.util.List;

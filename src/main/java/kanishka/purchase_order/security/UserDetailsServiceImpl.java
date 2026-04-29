@@ -1,6 +1,7 @@
 package kanishka.purchase_order.security;
 
-import kanishka.purchase_order.login.module.LoginModule;
+
+import kanishka.purchase_order.login.model.LoginModel;
 import kanishka.purchase_order.login.repository.LoginRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
@@ -19,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Look for the user in your 'users' table
-        LoginModule user = loginRepository.findByUsername(username)
+        LoginModel user = loginRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
         // return a spring security user object
         return new User(

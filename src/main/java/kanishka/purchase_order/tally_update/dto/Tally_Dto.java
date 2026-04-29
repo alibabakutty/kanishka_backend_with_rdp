@@ -1,7 +1,7 @@
 package kanishka.purchase_order.tally_update.dto;
 
 
-import kanishka.purchase_order.purchase_order.module.PurchaseOrderEntity;
+import kanishka.purchase_order.purchase_order.model.PurchaseOrderEntity;
 import lombok.Data;
 import org.springframework.web.bind.annotation.RequestMapping;
 

@@ -1,15 +1,16 @@
 package kanishka.purchase_order.login.repository;
 
-import kanishka.purchase_order.login.module.LoginModule;
+
+import kanishka.purchase_order.login.model.LoginModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface LoginRepository extends JpaRepository<LoginModule, Long> {
-    Optional<LoginModule> findByUsername(String username);
-    Optional<LoginModule> findByEmail(String email);
+public interface LoginRepository extends JpaRepository<LoginModel, Long> {
+    Optional<LoginModel> findByUsername(String username);
+    Optional<LoginModel> findByEmail(String email);
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
 }

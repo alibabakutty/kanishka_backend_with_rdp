@@ -6,7 +6,7 @@ import kanishka.purchase_order.exception.userNotFoundException.UserNotFoundExcep
 import kanishka.purchase_order.login.dto.LoginDTO;
 import kanishka.purchase_order.login.dto.UserProfileDTO;
 import kanishka.purchase_order.login.mapper.LoginMapper;
-import kanishka.purchase_order.login.module.LoginModule;
+import kanishka.purchase_order.login.model.LoginModel;
 import kanishka.purchase_order.login.repository.LoginRepository;
 import kanishka.purchase_order.login.service.LoginService;
 import kanishka.purchase_order.security.JwtUtils;
@@ -34,7 +34,7 @@ public class LoginServiceImpl implements LoginService {
     public ResponseEntity<Map<String, Object>> login(LoginDTO loginDTO) {
         validateLoginInput(loginDTO);
 
-        LoginModule user = loginRepository.findByUsername(loginDTO.getUsername())
+        LoginModel user = loginRepository.findByUsername(loginDTO.getUsername())
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid username "));
          if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
             throw new InvalidCredentialsException("Invalid password");
@@ -66,7 +66,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // use mapper to create entity from dto
-        LoginModule user = loginMapper.toEntity(loginDTO);
+        LoginModel user = loginMapper.toEntity(loginDTO);
 
         // encode password before saving (security best practice)
         user.setPassword(passwordEncoder.encode(loginDTO.getPassword()));
@@ -82,7 +82,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public ResponseEntity<UserProfileDTO> getCurrentUser(String username) {
-        LoginModule user = loginRepository.findByUsername(username)
+        LoginModel user = loginRepository.findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException("User not found: " + username));
         return ResponseEntity.ok(loginMapper.toProfileDTO(user));
     }
