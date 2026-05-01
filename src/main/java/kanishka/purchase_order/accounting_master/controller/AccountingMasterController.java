@@ -1,7 +1,6 @@
 package kanishka.purchase_order.accounting_master.controller;
 
 import jakarta.validation.Valid;
-import kanishka.purchase_order.accounting_master.converter.AccountingMasterConverter;
 import kanishka.purchase_order.accounting_master.dto.api_side.AccountingMasterRequest;
 import kanishka.purchase_order.accounting_master.dto.response_side.AccountingMasterResponse;
 import kanishka.purchase_order.accounting_master.dto.tally_json.AccountingMasterWrapper;
@@ -17,28 +16,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountingMasterController {
     private final AccountingMasterService service;
-    private final AccountingMasterConverter converter;
 
-//    @PostMapping("/tally")
-//    public ResponseEntity<String> createTallySundryCreditor(@RequestBody String request){
-//        System.out.println(request);
-//        return ResponseEntity.ok("Success");
-//    }
+    @PostMapping("/tally")
+    public ResponseEntity<String> createTallySundryCreditor(@RequestBody String request){
+        System.out.println(request);
+        return ResponseEntity.ok("Success");
+    }
 
     // tally json
-    @PostMapping("/tally")
-    public ResponseEntity<String> createAccountingMasterFromTally(
-            @RequestBody AccountingMasterWrapper wrapper
-            ){
-        if (wrapper == null || wrapper.getAccountingMasters().isEmpty()) {
-            throw new RuntimeException("Invalid Tally JSON: Customer Master details missing");
-        }
-
-        service.saveAllFromTally(wrapper);
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body("Successfully processed " + wrapper.getAccountingMasters().size() + " records from tally.");
-    }
+//    @PostMapping("/tally")
+//    public ResponseEntity<String> createAccountingMasterFromTally(
+//            @RequestBody AccountingMasterWrapper wrapper
+//            ){
+//        if (wrapper == null || wrapper.getAccountingMasters().isEmpty()) {
+//            throw new RuntimeException("Invalid Tally JSON: Customer Master details missing");
+//        }
+//
+//        service.saveAllFromTally(wrapper);
+//
+//        return ResponseEntity.status(HttpStatus.CREATED)
+//                .body("Successfully processed " + wrapper.getAccountingMasters().size() + " records from tally.");
+//    }
 
     @PostMapping
     public ResponseEntity<AccountingMasterResponse> create(
