@@ -1,12 +1,24 @@
 package kanishka.purchase_order.inventory_master.dto.tally_json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.math.BigDecimal;
 
 public record InventoryMasterInnerDto(
         @JsonProperty("name")
         String itemName,
 
         @JsonProperty("baseunits")
-        String uom
+        String itemUom,
+
+        @JsonProperty("ItemHSN")
+        String hsnCode,
+
+        @JsonProperty("ItemGST")
+        BigDecimal gstPercentage,
+
+        @JsonProperty("ItemRate")
+        BigDecimal itemRate
+
+
 ) {
 }

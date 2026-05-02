@@ -17,26 +17,26 @@ import java.util.List;
 public class AccountingMasterController {
     private final AccountingMasterService service;
 
-    @PostMapping("/tally")
-    public ResponseEntity<String> createTallySundryCreditor(@RequestBody String request){
-        System.out.println(request);
-        return ResponseEntity.ok("Success");
-    }
+//    @PostMapping("/tally")
+//    public ResponseEntity<String> createTallySundryCreditor(@RequestBody String request){
+//        System.out.println(request);
+//        return ResponseEntity.ok("Success");
+//    }
 
     // tally json
-//    @PostMapping("/tally")
-//    public ResponseEntity<String> createAccountingMasterFromTally(
-//            @RequestBody AccountingMasterWrapper wrapper
-//            ){
-//        if (wrapper == null || wrapper.getAccountingMasters().isEmpty()) {
-//            throw new RuntimeException("Invalid Tally JSON: Customer Master details missing");
-//        }
-//
-//        service.saveAllFromTally(wrapper);
-//
-//        return ResponseEntity.status(HttpStatus.CREATED)
-//                .body("Successfully processed " + wrapper.getAccountingMasters().size() + " records from tally.");
-//    }
+    @PostMapping("/tally")
+    public ResponseEntity<String> createAccountingMasterFromTally(
+            @RequestBody AccountingMasterWrapper wrapper
+            ){
+        if (wrapper == null || wrapper.getAccountingMasters().isEmpty()) {
+            throw new RuntimeException("Invalid Tally JSON: Customer Master details missing");
+        }
+
+        service.saveAllFromTally(wrapper);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Successfully processed " + wrapper.getAccountingMasters().size() + " records from tally.");
+    }
 
     @PostMapping
     public ResponseEntity<AccountingMasterResponse> create(

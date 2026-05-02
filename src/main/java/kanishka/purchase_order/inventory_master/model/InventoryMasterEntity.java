@@ -1,8 +1,11 @@
 package kanishka.purchase_order.inventory_master.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -22,6 +25,17 @@ public class InventoryMasterEntity {
     @Column(name = "item_name", nullable = false)
     private String itemName;
 
-    @Column(name = "uom", nullable = false)
-    private String uom;
+    @Column(name = "item_uom", nullable = false)
+    private String itemUom;
+
+    @Column(name = "hsn_code")
+    private String hsnCode;
+
+    @Column(name = "gst_percentage", precision = 5, scale = 2)
+    @DecimalMin(value = "0.0", inclusive = true)
+    @DecimalMax(value = "100.0", inclusive = true)
+    private BigDecimal gstPercentage;
+
+    @Column(name = "item_rate", precision = 19, scale = 2)
+    private BigDecimal itemRate;
 }
